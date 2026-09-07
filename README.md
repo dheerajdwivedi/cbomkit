@@ -19,7 +19,7 @@ CBOMkit is a toolset for dealing with Cryptography Bill of Materials (CBOM). CBO
 First, clone the repository and navigate to the project directory:
 
 ```shell
-git clone [https://github.com/cbomkit/cbomkit](https://github.com/cbomkit/cbomkit)
+git clone https://github.com/cbomkit/cbomkit
 cd cbomkit
 ```
 
@@ -37,14 +37,13 @@ To run the latest development build instead of the latest release, use the `edge
 ```shell
 make edge
 ```
-#### Option-2: Podman
+#### Option 2: Podman
 
 If you prefer Podman, ensure podman-compose is installed (`pip3 install podman-compose`), then run:
 ```shell
 # run the make command to start the docker compose using podman
 make production ENGINE=podman
 ```
-(This requires podman-compose to have been installed via `pip3 install podman-compose`).
 
 #### Option 3: Kubernetes (Helm)
 
@@ -183,7 +182,7 @@ cd opa
 
 ###### Findings Format
 Each policy must produce a JSON list named `findings`, which CBOMkit expects in OPA’s evaluation response.
-Every finding object must contain at least these three attributes:
+Every finding object must contain at least the first three mandatory attributes:
 
 ```rego
 {
@@ -213,7 +212,7 @@ Different deployment configurations utilize distinct sources for compliance veri
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `coeus`          | A `quantum-safe` algorithm compliance check is natively implemented within the frontend. This integration allows for immediate, client-side assessment of basic quantum resistance criteria.                                                                                                                                                                                                                                         |
 | `production`     | In the standard deployment, a core compliance service is integrated into the backend service. This implementation enables the execution of compliance checks via the RESTful API, providing a scalable and centralized approach to cryptographic policy verification.                                                                                                                                                                |
-| `ext-compliance` | In advanced deployment scenarios, compliance evaluation is delegated to a dedicated external service. This service can invoked by the API server as needed. This configuration maintains the standard user experience for both the frontend and API of the CBOMkit, mirroring the functionality of the `production` configuration while allowing for more sophisticated or specialized compliance checks to be performed externally. |
+| `ext-compliance` | In advanced deployment scenarios, compliance evaluation is delegated to a dedicated external service. This service can be invoked by the API server as needed. This configuration maintains the standard user experience for both the frontend and API of the CBOMkit, mirroring the functionality of the `production` configuration while allowing for more sophisticated or specialized compliance checks to be performed externally. |
 
 ### Database Migrations
 
